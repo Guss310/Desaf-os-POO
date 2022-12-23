@@ -16,6 +16,17 @@ namespace Ucu.Poo.Defense
                 return new ReadOnlyCollection<PublicationItem>(this.items);
             }
         }
+        // Introduje el metodo AsText para ver el string de la publicación 
+        public string AsText()
+        {
+            List<string> PubString = new List<string>();
+            
+            foreach (PublicationItem item in items)
+            {
+                PubString.Add($"{item.Quantity} de {item.Material.Name}, a ${item.Price}");
+            }
+            return string.Join(PubString.ToArray());
+        }
 
         private IList<PublicationItem> items = new List<PublicationItem>();
 
@@ -33,5 +44,7 @@ namespace Ucu.Poo.Defense
         {
             this.items.Remove(item);
         }
+        
+        
     }
 }
